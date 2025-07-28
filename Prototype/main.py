@@ -10,4 +10,5 @@ print(word)
 if args.add is not None:
     from adder import add_word
     add_word(word)
+    
 
