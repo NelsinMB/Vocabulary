@@ -1,8 +1,5 @@
 import argparse
 import sqlite3
-
-
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-a", "--add", help="Adds a new word to the system.") # Optional arguments must start with '-' or '--' in argparse
@@ -22,8 +19,7 @@ def main():
     
     if args.convert is not None:
         from Utils import convert_to_objects
-        conn = sqlite3.connect("vocabulary.db")
-        for entry in convert_to_objects(conn, "vocab"):
+        for entry in convert_to_objects("vocab"):
             print(entry.term)
     
 if __name__ == "__main__":

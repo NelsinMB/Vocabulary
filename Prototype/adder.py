@@ -1,17 +1,14 @@
 import sqlite3
 import requests
+import sys
 from datetime import datetime
+from Utils.db_utils import get_db_connection
 
 def add_word(word):
-    con = sqlite3.connect("vocabulary.db")
-    cur = con.cursor() # What is a cursor?
-
-    cur.execute("CREATE TABLE IF NOT EXISTS vocab(word, definition, creation_date, last_reviewed_date, review_count)")
-    #res = cur.execute("SELECT name FROM sqlite_master") # What does this do?
-    #res.fetchone() # What does this do?
-
-    cur.execute("""INSERT INTO vocab VALUES (?, ?, ?, ?, ?) """, (word, find_definition(word), datetime.now(), -1, 0))
-    con.commit()
+    with get_db_connection() as conn:
+        cur = conn.cursor() 
+        cur.execute("CREATE TABLE IF NOT EXISTS vocab(word, definition, creation_date, last_reviewed_date, review_count)")
+        cur.execute("""INSERT INTO vocab VALUES (?, ?, ?, ?, ?) """, (word, find_definition(word), datetime.now(), -1, 0))
 
 def find_definition(word):
     response = requests.get(f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}")
