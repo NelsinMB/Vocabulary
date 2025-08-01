@@ -23,3 +23,7 @@ A revision project, in some manner or form, has been on my mind since at least t
 - Community contributions.
 
 ## Technologies Used
+- SQLite
+- Python libraries (outside of common ones): Argparse
+
+
