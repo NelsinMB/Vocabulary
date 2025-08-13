@@ -1,5 +1,5 @@
 # Vocabulary (To be renamed later)
-To be cleaned up.
+To be cleaned up. 
 
 Suppose you come across a word you don't know the meaning of. If you are like me in the past, you create a definitino using the context of the situation, or if you are like me in the present and using a Kindle, you check the definition simply by holding down. Yet, the next night (or even later the same night), you have to repeat the process for a word that you know you've checked. The issue is, you never created a system to review the word, and who wants to review words while they are on their way to dreamland. \\
 

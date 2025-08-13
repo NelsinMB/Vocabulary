@@ -2,13 +2,21 @@ import sqlite3
 import requests
 import sys
 from datetime import datetime
-from ..utils.DBManager import get_db_connection
-from ..utils.DBManager import DBManager
+from utils.DBManager import DBManager
+from utils.Context import Context
 
-def add_word(word):
+def add_word(word, context: Context):
     db = DBManager()
-    db.execute("CREATE TABLE IF NOT EXISTS vocab(word, definition, creation_date, last_reviewed_date, review_count)")
-    db.execute("""INSERT INTO vocab VALUES (?, ?, ?, ?, ?) """, (word, find_definition(word), datetime.now(), -1, 0))
+    db.execute("CREATE TABLE IF NOT EXISTS words(id, term, def)")
+    db.execute("""INSERT INTO words (term, def) VALUES (?, ?) """, (word, find_definition(word))) # Do i put a place holder for primary key?
+    word_id = db.execute(
+        "SELECT id FROM words WHERE term = ?",
+                         (word, ), 
+                         fetch=True
+                         )[0][0]
+    db.execute("INSERT INTO deck_words (deck_id, word_id) VALUES (?, ?)", 
+                (context.current_deck_id, word_id)
+    )
 
 def find_definition(word):
     response = requests.get(f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}")
