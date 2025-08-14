@@ -8,7 +8,7 @@ from utils.Context import Context
 def add_word(word, context: Context):
     db = DBManager()
     db.execute("CREATE TABLE IF NOT EXISTS words(id, term, def)")
-    db.execute("""INSERT INTO words (term, def) VALUES (?, ?) """, (word, find_definition(word))) # Do i put a place holder for primary key?
+    db.execute("""INSERT INTO words (term, def) VALUES (?, ?) """, (word, find_definition(word))) 
     word_id = db.execute(
         "SELECT id FROM words WHERE term = ?",
                          (word, ), 

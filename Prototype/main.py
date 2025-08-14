@@ -1,7 +1,7 @@
 import argparse
 import sqlite3
 from utils.DBManager import DBManager
-from objects.adder import add_word_poop
+from objects.adder import add_word
 from utils.Context import Context
 
 def add_deck(name, context):
@@ -56,10 +56,18 @@ def list_current_deck(context: Context):
         (context.current_deck_id, ),
         fetch=True
     )
+    decks = [entry[0] for entry in decks]
     words = db.execute(
-        "SELECT name FROM words WHERE "
+        "SELECT w.term FROM words as w JOIN deck_words as dw ON w.id = dw.word_id WHERE dw.deck_id = ?",
+        (context.current_deck_id, ),
+        fetch=True
     )
-    
+    words = [entry[0] for entry in words]
+
+    for deck in decks:
+        print("Deck: ", deck)
+    for word in words:
+        print("Word: ",  word)
 
 def run_interactive():
     from utils.Context import Context
