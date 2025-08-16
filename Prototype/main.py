@@ -1,7 +1,7 @@
 import argparse
 import sqlite3
 from utils.DBManager import DBManager
-from objects.adder import add_word
+from objects.adder import add_word as adder_add_word
 from utils.Context import Context
 
 def add_deck(name, context):
@@ -42,11 +42,9 @@ def move_to_deck(name, context):
         else:
             print(f"Deck '{name}' not found under current deck.")
         
-    
-        
 
 def add_word(word, context):
-    add_word(word, context)
+    adder_add_word(word, context)
 
 # Lists the contents of the current deck, which consists of words and sub decks.
 def list_current_deck(context: Context):

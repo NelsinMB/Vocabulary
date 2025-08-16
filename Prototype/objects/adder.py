@@ -6,18 +6,39 @@ from utils.DBManager import DBManager
 from utils.Context import Context
 
 def add_word(word, context: Context):
-    db = DBManager()
-    db.execute("CREATE TABLE IF NOT EXISTS words(id, term, def)")
-    db.execute("""INSERT INTO words (term, def) VALUES (?, ?) """, (word, find_definition(word))) 
-    word_id = db.execute(
-        "SELECT id FROM words WHERE term = ?",
+    definition = find_definition(word)
+    response = input("The definition retrieved is: " +  find_definition(word) + "\n Type y if you are content with this definition, n if you are not and supply your own definition.")
+    
+    if response=="n":
+        definition = input("Enter the definition: ")
+        db = DBManager()
+        db.execute("CREATE TABLE IF NOT EXISTS words(id, term, def)")
+        db.execute("""INSERT INTO words (term, def) VALUES (?, ?) """, (word, definition)) 
+        word_id = db.execute(
+            "SELECT id FROM words WHERE term = ?",
                          (word, ), 
                          fetch=True
                          )[0][0]
-    db.execute("INSERT INTO deck_words (deck_id, word_id) VALUES (?, ?)", 
+        db.execute("INSERT INTO deck_words (deck_id, word_id) VALUES (?, ?)", 
                 (context.current_deck_id, word_id)
-    )
-
+        )
+    elif response=="y":
+        db = DBManager()
+        db.execute("CREATE TABLE IF NOT EXISTS words(id, term, def)")
+        db.execute("""INSERT INTO words (term, def) VALUES (?, ?) """, (word, definition)) 
+        word_id = db.execute(
+            "SELECT id FROM words WHERE term = ?",
+                         (word, ), 
+                         fetch=True
+                         )[0][0]
+        db.execute("INSERT INTO deck_words (deck_id, word_id) VALUES (?, ?)", 
+                (context.current_deck_id, word_id)
+        )
+    else:
+        print("Incorrect response")
+        return
+    
+   
 def find_definition(word):
     response = requests.get(f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}")
     if response.status_code == 200:
