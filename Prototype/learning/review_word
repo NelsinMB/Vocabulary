@@ -1,0 +1,33 @@
+class review_word:
+    
+    def __init__(self, term, definition, review_info):
+        this.term = term
+        this.definition = definition
+        
+    
+    def prompt() -> str:
+    
+    
+    def evaluate() -> bool:
+      pass
+
+
+    def log_statement():
+        """
+        Captures the information to be sent to the log of all reviews. This should be information specific to the moment
+        not information that can be calculated using the set of reviews. For instance, we record time to respond, but not
+        time between reviews, since the former cannot be calculated using the set of reviews but the latter can.
+        This also means that we do not record metrics such as length of answer, just the answer itself.
+    
+        Word, definition, date, time to respond, was a hint used, if a hint was used -> what was the hint 
+        TODO: could be useful to have a hint to answer similarity measure
+    
+        TODO: while this module focuses solely on reviewing a specific word, we could define sessions which in particular
+        would record the sequence of words reviewed, to see if there is any relationship between order of review
+        and outcomes
+    
+        """ 
+        
+    
+    
+    
