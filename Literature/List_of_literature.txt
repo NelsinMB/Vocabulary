@@ -1,0 +1,44 @@
+Foundations of Forgetting Curves (GPT Sourced):
+
+Ebbinghaus, H. (1885) – Memory: A Contribution to Experimental Psychology
+The original forgetting curve work. Shows exponential decay in recall probability over time
+
+Wixted, J. T. (2004) – The psychology and neuroscience of forgetting (Annual Review of Psychology).
+Summarizes forgetting curve models (exponential, power-law, etc.).
+
+Parametric Models in Spaced Repetition (GPT Sourced):
+
+Mettler, E., Massey, C. M., & Kellman, P. J. (2016). A comparison of adaptive and fixed schedules of practice. Journal of Experimental Psychology: General.
+Evidence that adaptive schedules (based on forgetting curves) improve retention.
+
+Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., & Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. Psychological Bulletin.
+Meta-analysis of spacing effects — supports adaptive scheduling.
+
+Algorithmic Approaches (GPT Sourced):
+
+SuperMemo algorithms (Wozniak, 1990s–present)
+SM-2: the algorithm behind Anki’s defaults.
+Later versions (SM-11, SM-17) use more sophisticated stability/difficulty modeling.
+Documentation: SuperMemo Guru.
+Settles, B., & Meeder, B. (2016). A Trainable Spaced Repetition Model for Language Learning. ACL.
+Duolingo’s logistic regression model to predict recall probability and schedule reviews.
+Khajah, M. M., Lindsey, R. V., & Mozer, M. C. (2014). Maximizing students’ retention via spaced review: A case study in personalized language learning. CogSci.
+Introduces models that balance efficiency and retention with optimization.
+Reddy, S., Levine, S., & Dragan, A. (2016). Accelerating human learning with deep reinforcement learning. NeurIPS Workshop.
+Early attempt to use RL for scheduling reviews adaptively.
+
+
+Statistical & ML Models of Memory (GPT Sourced):
+
+Pavlik, P. I., & Anderson, J. R. (2008). Using a model to compute the optimal schedule of practice. Journal of Experimental Psychology: Applied.
+ACT-R based model with parameters for decay and reinforcement — very influential.
+Piech, C., Bassen, J., Huang, J., Ganguli, S., Sahami, M., Guibas, L., & Sohl-Dickstein, J. (2015). Deep Knowledge Tracing. NeurIPS.
+Applies RNNs to predict student recall (inspired later ML work in spaced repetition).
+Settles, B. & Bernstein, M. (2014). Learning Curves: Training Time and Data Size in Machine Learning. Not spaced repetition per se, but gives useful statistical perspectives.
+
+Operations Research Angle (GPT Sourced):
+
+Lindsey, R. V., Shroyer, J. D., Pashler, H., & Mozer, M. C. (2014). Improving students’ long-term knowledge retention through personalized review. Psychological Science.
+Formalizes scheduling as an optimization problem: maximize retention given review constraints.
+Mozer, M. C., Lindsey, R. V., & Pashler, H. (2009). Predicting and improving memory retention: Psychological theory matters in the big data era. Advances in Neural Information Processing Systems.
+Ties psychological models to algorithmic scheduling.
