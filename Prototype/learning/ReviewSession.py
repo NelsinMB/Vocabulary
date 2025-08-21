@@ -1,16 +1,14 @@
+import ReviewResult
+
 class review_word:
+    word_id: int
     
-    def __init__(self, term, definition, review_info):
-        this.term = term
-        this.definition = definition
+    def run (self, io, strategy) -> ReviewResult:
+      
+      
+      return ReviewResult()
         
     
-    def prompt() -> str:
-    
-    
-    def evaluate() -> bool:
-      pass
-
 
     def log_statement():
         """
